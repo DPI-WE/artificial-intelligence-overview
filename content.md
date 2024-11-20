@@ -227,7 +227,10 @@ To fully open source it, you would release the method you used to get there — 
 
 ### Neural Networks
 
-Linear regression only works well for input/output data that is numerical. More generalized machine learning techniques have been developed that work for other types of data — for example, images, sound clips, and text. (eg 1957: Frank Rosenblatt's Perceptron, roughly modeled on a neuron.)
+Linear regression only works well for input/output data that is numerical. More generalized machine learning techniques have been developed that work for other types of data — for example, images, sound clips, and text.
+
+- Frank Rosenblatt's Perceptron, roughly modeled on a neuron
+- Transformer Model, Text is converted to numerical representations called tokens
 
 [What Is a Neural Network?](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=spiral&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2,2&seed=0.16614&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=true&xSquared=true&ySquared=true&cosX=false&sinX=true&cosY=false&sinY=true&collectStats=false&problem=classification&initZero=false&hideText=false)
 
