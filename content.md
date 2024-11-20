@@ -1,6 +1,7 @@
 # Artificial Intelligence
 
 > "Writing is thinking. To write well is to think clearly. That's why it's so hard."
+>
 > David McCullough
 
 ## Overview
@@ -9,8 +10,7 @@ One of the objectives of this lesson is to provide future developers, managers, 
 
 For the last two decades, the kind of technology ["eating the world"](https://a16z.com/why-software-is-eating-the-world/) was internet-based, CRUD apps like Instagram and Airbnb. So we set out to learn how to build that kind of software.
 
-However, AI and machine learning (ML) are now emerging as the next wave of impactful technologies. This shift allows developers to build applications leveraging powerful AI models, such as those powering platforms like ChatGPT.
-
+However, AI and machine learning (ML) are now emerging as the next wave of impactful technologies. This shift allows developers to build applications leveraging powerful AI models, such as those powering platforms like [ChatGPT](https://chatgpt.com/).
 
 ## AI for Developers
 
@@ -20,7 +20,7 @@ A great resource to dive deeper is the [Fast.ai course](https://course.fast.ai/)
 
 ## OpenAI and Accessibility
 
-OpenAI has made some of the most advanced AI models available to developers through APIs. Available at [OpenAI](https://platform.openai.com/signup), these APIs let developers integrate powerful AI features into applications. They also created their own consumer-facing product called [ChatGPT](https://chatgpt.com/). ChatGPT was supposed to mainly be an advertisement for their API, but has become the fastest growing consumer tech product of all time.
+OpenAI has made some of the most advanced AI models available to developers through APIs. Available at [OpenAI](https://platform.openai.com/signup), these APIs let developers integrate powerful AI features into their applications. They also created their own consumer-facing product called ChatGPT. ChatGPT was supposed to mainly be an advertisement for their API, but has become the fastest growing consumer tech product of all time.
 
 ## Hands-on with OpenAI Playground
 
@@ -58,7 +58,6 @@ To experiment in the OpenAI playground:
 ![](assets/openai-playground-completion-temperature-probability.png)
 
 A temperature of around 0.8 seems to give the "best" results. Why? No one knows. This is more like biology than the computer science we're used to; rather than designing all capabilities up front and then painstakingly codifying them by hand, we develop a model and then poke at it to discover its emergent properties.
-
 
 #### Context
 Try generating some text based on the following prompts:
@@ -130,11 +129,7 @@ Is described by:
 
 `y = 7x − 140`
 
-Where y is ice cream sales and x is degrees Fahrenheit.
-This formula is a *model* of the ice cream/temperature phenomenon.
-Once I've determined the m and b that describe the line I drew through my data, I can plug in any temperature for x and predict how many ice cream sales.
-x and the constant factor 1 are the **parameters** in this model (2 of them).
-m (7 in this case) and b (-140 in this case) are called the **weights** in this model.
+Where y is ice cream sales and x is degrees Fahrenheit. This formula is a *model* of the ice cream/temperature phenomenon. Once I've determined the m and b that describe the line I drew through my data, I can plug in any temperature for x and predict how many ice cream sales. `x` and the constant factor `1` are the **parameters** in this model (2 of them). `m` (7 in this case) and `b` (-140 in this case) are called the **weights** in this model.
 
 But, someone else might eyeball the line differently:
 
@@ -146,14 +141,14 @@ One approach is to measure the "error" of each prediction vs the data:
 
 ![](assets/ice-cream-plot-7.png)
 
-If we add up all the errors, we can come up with a measure of "fit" (or lack of fit, to be precise). Another common approach is to square the errors before adding them up. This approach gives extreme outliers more influence over fit. [Let's play around with this interactive visualization.](https://www.geogebra.org/m/XUkhCJRj) Try checking the first three checkboxes and then playing around with the sliders for m and b until you find the best possible line. Then you can see how close you got to the "ideal" line by checking the last box.
+If we add up all the errors, we can come up with a measure of "fit" (or lack of fit, to be precise). Another common approach is to square the errors before adding them up. This approach gives extreme outliers more influence over fit. [Let's play around with this interactive visualization.](https://www.geogebra.org/m/XUkhCJRj) Try checking the first three checkboxes and then playing around with the sliders for `m` and `b` until you find the best possible line. Then you can see how close you got to the "ideal" line by checking the last box.
 
 This is a method called "least squares". The way I found the best fit line was:
-- Move the intercept a little; then play around with the slope until the sum of squares started going up; then reverse direction until the sum of squares slowed down and stopped.
-- Then I'd rinse and repeat by moving the intercept, play around with the slope, and see if I could beat my previous score.
-- I iteratively arrived at the best line by observing the rate of change of the fit as I nudged each parameter.
+1. Move the intercept a little; then play around with the slope until the sum of squares started going up; then reverse direction until the sum of squares slowed down and stopped.
+2. Then I'd rinse and repeat by moving the intercept, play around with the slope, and see if I could beat my previous score.
+3. I iteratively arrived at the best line by observing the rate of change of the fit as I nudged each parameter.
 
-In this approach, the sum of the squares is called the loss function — it represents how far away from the data the model is. We played around by trial and error until we minimized the loss. If we run the least squares method for the ice cream stand data, we get:
+In this approach, the sum of the squares is called the **loss function** — it represents how far away from the data the model is. We played around by trial and error until we minimized the loss. If we run the least squares method for the ice cream stand data, we get:
 
 `y = 6x + 60`
 
@@ -163,13 +158,13 @@ It's somewhere between the two eyeballed lines:
 ![](assets/ice-cream-plot-8.png)
 
 
-So:
-- we collected some data — input/output pairs.
-- From the data, we generalized a model (above) into which we can plug any input to predict a corresponding output.
+So for we've:
+- collected some data — input/output pairs.
+- generalized a model (above) into which we can plug any input to predict a corresponding output.
 
 What does our model predict our sales will be when the temperature is 0 degrees? How about -20 degrees?
 
-Lesson:
+#### Hallucinations
 
 Predictions made outside of the range of the training data are basically useless — or worse, deceptive. In the new world of generative AI, these are referred to as "hallucinations".
 
@@ -199,7 +194,9 @@ Better. But [a third degree polynomial can be made to fit even better](https://w
 
 This model is something like:
 
-`y = −0.001x^3 + x^2 −52x + 1200`
+```latex
+y = -0.001x^3 + x^2 - 52x + 1200
+```
 
 The additional terms of the third-degree polynomial — the new architecture — gave us more flexibility to fit the data. The search for the right parameters (-0.001, 1, -52, and 1200) got a lot harder.
 
@@ -209,7 +206,7 @@ Linear regression is a 200 year old form of "machine learning". "Machine learnin
 
 `p = mv`
 
-`p` is momentum, `m` is mass, and `v` is velocity. If we know the mass and velocity of an object, this model allows us to predict its momentum (by multiplying them together). This is Newton's Second Law. He didn't use regression; he developed a theory of how the underlying mechanism worked and deduced it. By contrast, our formula for the temperature/ice cream relationship was purely data-driven.
+`p` is momentum, `m` is mass, and `v` is velocity. If we know the mass and velocity of an object, this model allows us to predict its momentum (by multiplying them together). This is Newton's Second Law. He didn't use regression; he developed a theory of how the underlying mechanism worked and deduced it. By contrast, our formula for the temperature/ice cream relationship was inferred. (data-driven)
 
 ### Takeaways from this exercise:
 
@@ -227,7 +224,7 @@ To fully open source it, you would release the method you used to get there — 
 
 
 
-Timeline
+### Neural Networks
 
 Linear regression only works well for input/output data that is numerical. More generalized machine learning techniques have been developed that work for other types of data — for example, images, sound clips, and text. (eg 1957: Frank Rosenblatt's Perceptron, roughly modeled on a neuron.)
 
@@ -235,7 +232,7 @@ Linear regression only works well for input/output data that is numerical. More 
 
 > "It’s a technique for building a computer program that learns from data. It is based very loosely on how we think the human brain works. First, a collection of software 'neurons' are created and connected together, allowing them to send messages to each other. Next, the network is asked to solve a problem, which it attempts to do over and over, each time strengthening the connections that lead to success and diminishing those that lead to failure."
 
-Theoretically, can learn any function, unlike linear regression.
+Theoretically, neural networks can learn any function, unlike linear regression.
 
 ## Quiz
 
@@ -284,9 +281,18 @@ Theoretically, can learn any function, unlike linear regression.
   - Correct! Overfitting reduces the model's ability to generalize.
 {: .choose_best #overfitting title="Understanding Overfitting" points="1" answer="3" }
 
+## Conclusion
+
+Artificial intelligence represents a transformative leap in how software interacts with and learns from the world. This lesson introduced foundational concepts of AI, its practical applications, and how developers can start leveraging tools like OpenAI's APIs. With a basic intuition of how AI models work, you are equipped to experiment, innovate, and integrate these powerful technologies into your projects.
+
+## Resources
+- [Artificial Intelligence Readings](https://learn.firstdraft.com/lessons/329-ai-readings)
+- [Example OpenAI API request](https://learn.firstdraft.com/lessons/121-openai-api-example)
+- [OpenAi Developer Playground](https://platform.openai.com/playground/complete)
+
 ---
 
-#### Time Taken
+## Time Taken
 - Approximately how long (in minutes) did this lesson take you to complete?
 {: .free_text_number #time_taken title="Time taken" points="1" answer="any" }
 
