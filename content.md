@@ -202,7 +202,7 @@ The additional terms of the third-degree polynomial — the new architecture —
 
 Linear regression is a 200 year old form of "machine learning". "Machine learning" is where we try to develop a solution by collecting data and **inferring** a pattern, rather than deducing the fundamental theory underlying the phenomenon.
 
-### Example: Newton's Second Law
+### Deduction Example: Newton's Second Law
 
 `p = mv`
 
