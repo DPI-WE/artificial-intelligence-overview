@@ -42,10 +42,12 @@ To experiment in the OpenAI playground:
 
 ![](/assets/openai-playground-completion.png)
 
+![](/assets/openai-playground-completion-temperature-probability.png)
+
 #### Temperature
 
 - Trying starting over with the original input.
-- Adjust the **"Temperature"** setting to observe how randomness affects the output:
+- Adjust the **"Temperature"** setting to observe how randomness affects the output.
 - Notice that it doesn't generate the same thing every time — there is some randomness to it.
 - Try adjusting the Temperature value on the right side to 0.
 - Submit, and then Regenerate. Regenerate a few times.
@@ -54,8 +56,6 @@ To experiment in the OpenAI playground:
 - Do you notice how the results change with temperature?
   - Low temperature (e.g., 0) generates consistent responses.
   - High temperature increases variability in the responses.
-
-![](/assets/openai-playground-completion-temperature-probability.png)
 
 A temperature of around 0.8 seems to give the "best" results. Why? No one knows. This is more like biology than the computer science we're used to; rather than designing all capabilities up front and then painstakingly codifying them by hand, we develop a model and then poke at it to discover its emergent properties.
 
