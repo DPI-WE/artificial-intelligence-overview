@@ -30,7 +30,7 @@ To experiment in the OpenAI playground:
 1. Sign up for a developer account and purchase at least $5 of credits: [OpenAI Signup](https://platform.openai.com/signup).
 2. Visit the [Playground](https://platform.openai.com/playground/complete). Ensure you are on the "Completions" tab and the "Model" dropdown is set to **davinci-002**.
 
-![](assets/openai-playground.png)
+![](/assets/openai-playground.png)
 
 ### Experimenting with Prompts
 
@@ -40,7 +40,7 @@ To experiment in the OpenAI playground:
 - The model will return a bit of additional text — one "token". This text is called the "output" or "completion".
 - Keep Submitting to make the sentence grow.
 
-![](assets/openai-playground-completion.png)
+![](/assets/openai-playground-completion.png)
 
 #### Temperature
 
@@ -55,7 +55,7 @@ To experiment in the OpenAI playground:
   - Low temperature (e.g., 0) generates consistent responses.
   - High temperature increases variability in the responses.
 
-![](assets/openai-playground-completion-temperature-probability.png)
+![](/assets/openai-playground-completion-temperature-probability.png)
 
 A temperature of around 0.8 seems to give the "best" results. Why? No one knows. This is more like biology than the computer science we're used to; rather than designing all capabilities up front and then painstakingly codifying them by hand, we develop a model and then poke at it to discover its emergent properties.
 
@@ -99,21 +99,21 @@ One approach would be to diligently log temperature versus sales for some period
 
 Then we could make a plot of our data:
 
-![](assets/ice-cream-plot-1.png)
+![](/assets/ice-cream-plot-1.png)
 
 It's not too useful yet. But let's keep diligently collecting observations:
 
-![](assets/ice-cream-plot-2.png)
+![](/assets/ice-cream-plot-2.png)
 
 And eventually, a pattern starts to emerge:
 
-![](assets/ice-cream-plot-3.png)
+![](/assets/ice-cream-plot-3.png)
 
 Let's say that next week the forecast is 50 degrees. I want to predict how much ice cream will be consumed, so I can buy the right amount. I could just sorta eyeball it, but to make more systematic predictions...
 
 I could draw a line that approximates the data:
 
-![](assets/ice-cream-plot-4.png)
+![](/assets/ice-cream-plot-4.png)
 
 Recall that we can describe a line with an equation of the form:
 
@@ -123,7 +123,7 @@ Where `m` is the slope of the line and `b` is where the line crosses the y axis 
 
 This line that I drew:
 
-![](assets/ice-cream-plot-5.png)
+![](/assets/ice-cream-plot-5.png)
 
 Is described by:
 
@@ -133,13 +133,13 @@ Where y is ice cream sales and x is degrees Fahrenheit. This formula is a *model
 
 But, someone else might eyeball the line differently:
 
-![](assets/ice-cream-plot-6.png)
+![](/assets/ice-cream-plot-6.png)
 
 Is there a way to decide, objectively, which line is a better model?
 
 One approach is to measure the "error" of each prediction vs the data:
 
-![](assets/ice-cream-plot-7.png)
+![](/assets/ice-cream-plot-7.png)
 
 If we add up all the errors, we can come up with a measure of "fit" (or lack of fit, to be precise). Another common approach is to square the errors before adding them up. This approach gives extreme outliers more influence over fit. [Let's play around with this interactive visualization.](https://www.geogebra.org/m/XUkhCJRj) Try checking the first three checkboxes and then playing around with the sliders for `m` and `b` until you find the best possible line. Then you can see how close you got to the "ideal" line by checking the last box.
 
@@ -155,7 +155,7 @@ In this approach, the sum of the squares is called the **loss function** — it 
 
 It's somewhere between the two eyeballed lines:
 
-![](assets/ice-cream-plot-8.png)
+![](/assets/ice-cream-plot-8.png)
 
 
 So for we've:
@@ -170,27 +170,27 @@ Predictions made outside of the range of the training data are basically useless
 
 So we should keep collecting more data if we want to make predictions across a wider range of inputs.
 
-![](assets/ice-cream-plot-9.png)
+![](/assets/ice-cream-plot-9.png)
 
 Our old model isn't a very good fit anymore:
 
-![](assets/ice-cream-plot-10.png)
+![](/assets/ice-cream-plot-10.png)
 
 And "hallucinates" at 125 degrees:
 
-![](assets/ice-cream-plot-11.png)
+![](/assets/ice-cream-plot-11.png)
 
 We could run least squares on the new, larger dataset, but a line is no longer a very good fit:
 
-![](assets/ice-cream-plot-12.png)
+![](/assets/ice-cream-plot-12.png)
 
 We might need a new architecture for our model. [Let's try a parabola](https://www.desmos.com/calculator/3ltwect0mc):
 
-![](assets/ice-cream-plot-13.png)
+![](/assets/ice-cream-plot-13.png)
 
 Better. But [a third degree polynomial can be made to fit even better](https://www.desmos.com/calculator/wqufjhhj8y):
 
-![](assets/ice-cream-plot-14.png)
+![](/assets/ice-cream-plot-14.png)
 
 This model is something like:
 
@@ -213,9 +213,9 @@ Linear regression is a 200 year old form of "machine learning". "Machine learnin
 1. More data improves the model: We improve the fit of the model through trial and error — by measuring loss, adjusting weights, measuring again, etc, etc, until we get close to a minimum.
 The more times we iterate, the closer we get to the "true" minimum.
 
-![](assets/overfitting-1.png)
+![](/assets/overfitting-1.png)
 
-![](assets/overfitting-2.png)
+![](/assets/overfitting-2.png)
 
 2. The predictions of the model are only useful within the range of the data it was trained on: Outside, it "hallucinates". More parameters give us more flexibility to fit the data. More parameters without more data can lead to "overfitting". More data and more parameters increase the difficulty of iterating to minimize loss.
 
