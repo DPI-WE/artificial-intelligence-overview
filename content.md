@@ -210,19 +210,20 @@ Linear regression is a 200 year old form of "machine learning". "Machine learnin
 
 ### Takeaways from this exercise:
 
-1. More data improves the model: We improve the fit of the model through trial and error — by measuring loss, adjusting weights, measuring again, etc, etc, until we get close to a minimum.
+#### 1. More data improves the model
+We improve the fit of the model through trial and error — by measuring loss, adjusting weights, measuring again, etc, etc, until we get close to a minimum.
 The more times we iterate, the closer we get to the "true" minimum.
 
 ![](/assets/overfitting-1.png)
 
 ![](/assets/overfitting-2.png)
 
-2. The predictions of the model are only useful within the range of the data it was trained on: Outside, it "hallucinates". More parameters give us more flexibility to fit the data. More parameters without more data can lead to "overfitting". More data and more parameters increase the difficulty of iterating to minimize loss.
+#### 2. The predictions of the model are only useful within the range of the data it was trained on
+Outside, it "hallucinates". More parameters give us more flexibility to fit the data. More parameters without more data can lead to "overfitting". More data and more parameters increase the difficulty of iterating to minimize loss.
 
-3. We don't know what the meaning of the parameters is, just that they work: When someone "releases a model", that means releasing both the architecture and the weights.
+#### 3. We don't know what the meaning of the parameters is, just that they work
+When someone "releases a model", that means releasing both the architecture and the weights.
 To fully open source it, you would release the method you used to get there — the training data, the loss function you chose, etc.
-
-
 
 ### Neural Networks
 
